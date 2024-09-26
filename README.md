@@ -1,6 +1,12 @@
 
 # VH Soni Jewellers Shopping Cart
 
+<div align="center">
+  
+
+  <img src="https://github.com/user-attachments/assets/bd943377-12f7-40fa-802d-a1c543016417" alt="logo" width="300"/>
+</div>
+
 ## Description
 Welcome to the **VH Soni Jewellers Shopping Cart** project! This application is a mock shopping cart built with React, designed to showcase the key concepts of component structure, state management, and routing in React. Users can browse products, add items to their cart, and adjust quantities with a user-friendly interface.
 
