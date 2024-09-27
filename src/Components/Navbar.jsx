@@ -1,3 +1,5 @@
+import "/src/index.css";
+
 export default function Navbar() {
   return (
     <nav className="bg-blue-600 p-4 shadow-md">
