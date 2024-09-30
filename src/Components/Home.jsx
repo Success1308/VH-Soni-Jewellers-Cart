@@ -14,7 +14,7 @@ export default function Home() {
       <h1 className="text-3xl font-bold mb-4 text-center">
         Jewelry Collection
       </h1>
-      <div className="mx-8 grid gap-8  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5">
+      <div className="mx-8 grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5">
         {data.map((item) => (
           <div
             key={item.id}
