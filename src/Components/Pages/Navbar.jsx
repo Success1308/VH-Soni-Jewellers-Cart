@@ -1,8 +1,14 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { FaSearch } from "react-icons/fa";
-import { FiUser, FiShoppingBag } from "react-icons/fi";
+import { FiSearch, FiUser, FiShoppingBag, FiMenu, FiX } from "react-icons/fi";
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen((prev) => !prev);
+  };
+
   return (
     <nav className="bg-white p-2 my-12 mb-8 shadow-md border-t border-b border-gray-300 text-lg">
       <div className="container mx-auto flex justify-between items-center h-16">
@@ -44,8 +50,17 @@ export default function Navbar() {
           </NavLink>
         </div>
 
-        <div className="flex items-center space-x-4">
-          <FaSearch className="text-gray-700 w-6 h-6 hover:text-black transition duration-300" />
+        {/* Mobile menu toggle button */}
+        <button onClick={toggleMenu} className="md:hidden">
+          {isOpen ? (
+            <FiX className="text-gray-700 w-6 h-6 hover:text-black transition duration-300" />
+          ) : (
+            <FiMenu className="text-gray-700 w-6 h-6 hover:text-black transition duration-300" />
+          )}
+        </button>
+
+        <div className="flex items-center space-x-4 hidden md:flex">
+          <FiSearch className="text-gray-700 w-6 h-6 hover:text-black transition duration-300" />
           <FiUser className="text-gray-700 w-6 h-6 hover:text-black transition duration-300" />
           <div className="relative">
             <FiShoppingBag className="text-gray-700 w-6 h-6 hover:text-black transition duration-300" />
@@ -55,6 +70,59 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+
+      {/* Mobile menu */}
+      {isOpen && (
+        <div className="md:hidden flex flex-col items-center bg-white border-t border-gray-300 mt-2">
+          <NavLink
+            to="/"
+            className="text-gray-700 font-semibold py-2 hover:text-black transition duration-300"
+            onClick={toggleMenu}
+          >
+            NEW IN
+          </NavLink>
+          <NavLink
+            to="/men"
+            className="text-gray-700 font-semibold py-2 hover:text-black transition duration-300"
+            onClick={toggleMenu}
+          >
+            MEN
+          </NavLink>
+          <NavLink
+            to="/women"
+            className="text-gray-700 font-semibold py-2 hover:text-black transition duration-300"
+            onClick={toggleMenu}
+          >
+            WOMEN
+          </NavLink>
+          <NavLink
+            to="/about"
+            className="text-gray-700 font-semibold py-2 hover:text-black transition duration-300"
+            onClick={toggleMenu}
+          >
+            ABOUT
+          </NavLink>
+          <NavLink
+            to="/contact"
+            className="text-gray-700 font-semibold py-2 hover:text-black transition duration-300"
+            onClick={toggleMenu}
+          >
+            CONTACT
+          </NavLink>
+
+          {/* Icons in mobile menu */}
+          <div className="flex items-center space-x-4 mt-4">
+            <FiSearch className="text-gray-700 w-6 h-6 hover:text-black transition duration-300" />
+            <FiUser className="text-gray-700 w-6 h-6 hover:text-black transition duration-300" />
+            <div className="relative">
+              <FiShoppingBag className="text-gray-700 w-6 h-6 hover:text-black transition duration-300" />
+              <span className="absolute -top-1 -right-1.5 inline-flex items-center justify-center px-1 py-1 text-tiny font-bold leading-none text-white bg-black rounded-full">
+                0
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
