@@ -1,8 +1,7 @@
 import useFetch from "../Util/useFetch";
 
 export default function Home() {
-  // Use the hook with your API endpoint
-  const { loading, error } = useFetch(
+  const { data, loading, error } = useFetch(
     "https://jewellery-shop-api-one.vercel.app/jewellery"
   );
 
@@ -10,7 +9,7 @@ export default function Home() {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="p-4 bg-gray-100 min-h-screen">
+    <div className=" min-h-screen">
       <h1 className="text-3xl font-bold mb-4 text-center">
         Jewelry Collection
       </h1>
@@ -44,8 +43,8 @@ export default function Home() {
                 Add to Cart
               </button>
             </div>
-          </div> */}
-        {/* ))} */}
+          </div>
+        ))} */}
       </div>
     </div>
   );

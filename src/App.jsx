@@ -1,4 +1,9 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Route,
+  createRoutesFromElements,
+  RouterProvider,
+} from "react-router-dom";
 import "./App.css";
 import Home from "./Components/Pages/Home";
 import All from "./Components/Pages/All";
@@ -7,25 +12,24 @@ import Women from "./Components/Pages/Women";
 import About from "./Components/Pages/About";
 import Navbar from "./Components/Pages/Navbar";
 import Contact from "./Components/Pages/Navbar";
+import NotFound from "./Components/Pages/NotFound";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Navbar />}>
+      <Route index element={<Home />} />
+      <Route path="all" element={<All />} />
+      <Route path="men" element={<Men />} />
+      <Route path="women" element={<Women />} />
+      <Route path="about" element={<About />} />
+      <Route path="contact" element={<Contact />} />
+      <Route path="*" element={<NotFound />} />
+    </Route>
+  )
+);
 
 function App() {
-  return (
-    <BrowserRouter>
-      <header>
-        <Navbar />
-      </header>
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="all" element={<All />} />
-          <Route path="men" element={<Men />} />
-          <Route path="women" element={<Women />} />
-          <Route path="about" element={<About />} />
-          <Route path="contact" element={<Contact />} />
-        </Routes>
-      </main>
-    </BrowserRouter>
-  );
+  return <RouterProvider router={router}></RouterProvider>;
 }
 
 export default App;
