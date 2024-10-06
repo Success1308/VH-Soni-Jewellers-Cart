@@ -1,4 +1,5 @@
 import useFetch from "../Util/useFetch";
+import { NavLink } from "react-router-dom";
 
 export default function Home() {
   const { data, loading, error } = useFetch(
@@ -13,52 +14,53 @@ export default function Home() {
 
   return (
     <div className=" min-h-screen">
-      <h1 className="text-3xl font-bold mb-4 text-center">
-        Jewelry Collection
-      </h1>
-      <div className="mx-8 grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5">
-        {data.map((item) => (
-          <div
-            key={item.id}
-            className="border rounded-lg p-4 bg-white shadow-md"
-          >
-            <img
-              src={item.img}
-              alt={item.name}
-              className="w-45 h-45 object-cover mb-2 rounded-md"
-            />
-            <h2 className="text-xl font-semibold text-gray-800 text-center">
-              {item.name}
-            </h2>
-
-            <p className="text-sm text-gray-500 text-center">
-              Category: {item.category}
-            </p>
-            <p className="text-sm text-gray-500 text-center">
-              Color: {item.color}
-            </p>
-            <p className="text-gray-700 mb-2 text-center">{item.details}</p>
-            <p className="text-lg font-bold text-gray-900 text-center">
-              ${item.price}
-            </p>
-            <div className="text-center mt-4">
-              <button className="px-4 py-2 bg-[#FFD700] text-white font-semibold rounded hover:bg-[#FFBF00] transition duration-300">
-                Add to Cart
-              </button>
+      {" "}
+      <div className="bg-gray-100 p-4">
+        <h2 className="text-2xl font-bold text-center mb-6">New Arrivals</h2>
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
+          {data.map((item) => (
+            <div
+              key={item.id}
+              className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300"
+            >
+              <NavLink to={`/product/${item.id}`}>
+                <img
+                  src={item.img}
+                  alt={item.name}
+                  className="w-full h-48 object-cover rounded-t-lg"
+                />
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold">{item.name}</h3>
+                  <p className="text-gray-600">{item.price}</p>
+                </div>
+              </NavLink>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+      </div>{" "}
+      <div className="bg-gray-100 p-4">
+        <h2 className="text-2xl font-bold text-center mb-6">New Arrivals</h2>
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
+          {data.map((item) => (
+            <div
+              key={item.id}
+              className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300"
+            >
+              <NavLink to={`/product/${item.id}`}>
+                <img
+                  src={item.img}
+                  alt={item.name}
+                  className="w-full h-48 object-cover rounded-t-lg"
+                />
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold">{item.name}</h3>
+                  <p className="text-gray-600">{item.price}</p>
+                </div>
+              </NavLink>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
 }
-
-export const apiLoader = async () => {
-  const response = await fetch(
-    "https://jewellery-shop-api-one.vercel.app/jewellery"
-  );
-  if (!response.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return response.json();
-};

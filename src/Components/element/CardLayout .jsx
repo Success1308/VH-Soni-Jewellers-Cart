@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import Card from "./Card";
 import { FiFilter, FiArrowUp, FiArrowDown } from "react-icons/fi";
+import { NavLink } from "react-router-dom";
 
 const CardLayout = ({ items, title }) => {
   const [filterColor, setFilterColor] = useState("All");
@@ -53,7 +54,7 @@ const CardLayout = ({ items, title }) => {
   };
 
   return (
-    <div className="p-4">
+    <div className="px-4">
       <div className="flex items-center justify-between mb-4 bg-white rounded-md shadow-md pb-4 px-6">
         <div className="flex-grow text-center">
           <p className="text-xl sm:text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-yellow-800 to-pink-400 bg-clip-text text-transparent drop-shadow-lg">
@@ -94,7 +95,6 @@ const CardLayout = ({ items, title }) => {
             )}
           </div>
 
-          {/* Sort Order */}
           <div className="relative" ref={sortDropdownRef}>
             <label
               className="cursor-pointer flex items-center"
@@ -139,9 +139,12 @@ const CardLayout = ({ items, title }) => {
       </div>
 
       {/* Jewelry Cards */}
-      <div className="mx-8 grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5">
+
+      <div className="mx-12 grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5">
         {sortedData.map((item) => (
-          <Card key={item.id} item={item} />
+          <NavLink key={item.id} to={`/product/${item.id}`}>
+            <Card key={item.id} item={item} />
+          </NavLink>
         ))}
       </div>
     </div>
