@@ -16,7 +16,7 @@ export default function Navbar() {
         <nav className="bg-white p-2 my-0 md:my-12 mb-8 shadow-md border-t border-b border-gray-300 text-lg">
           <div className=" container mx-auto flex justify-between items-center h-16">
             <img
-              src="/src/assets/logo.jpg"
+              src="/public/img/logo.jpg"
               alt="VH Soni Jewellers"
               className="h-20 md:h-32 rounded-lg"
             />

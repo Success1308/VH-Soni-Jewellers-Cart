@@ -2,26 +2,26 @@ const JewelryFeatures = () => {
   const features = [
     {
       id: 1,
-      icon: "/src/assets/shipping.png",
+      icon: "/public/img/shipping.png",
       title: "FAST & SECURE SHIPPING",
       description: "Enjoy quick delivery of your favorite jewelry pieces!",
     },
     {
       id: 2,
-      icon: "/src/assets/discount.png",
+      icon: "/public/img/discount.png",
       title: "EXCLUSIVE OFFERS",
       description: "Get special discounts on your first purchase!",
     },
     {
       id: 3,
-      icon: "/src/assets/authentic.png",
+      icon: "/public/img/authentic.png",
       title: "100% AUTHENTIC",
       description:
         "All our jewelry is crafted with the highest quality standards.",
     },
     {
       id: 4,
-      icon: "/src/assets/customer.png",
+      icon: "/public/img/customer.png",
       title: "24/7 CUSTOMER SUPPORT",
       description: "We're here to help you anytime, anywhere.",
     },
