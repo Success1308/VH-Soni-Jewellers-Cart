@@ -54,9 +54,9 @@ const CategorySection = () => {
   if (error) return <p>Error loading categories: {error}</p>;
 
   return (
-    <section className="border my-auto min-h-[70vh] flex flex-col items-center justify-center">
+    <section className="border my-auto min-h-[70vh] flex flex-col items-center justify-center p-4">
       <h2 className="text-center text-3xl font-semibold">Shop by Category</h2>
-      <div className="flex justify-center gap-8 my-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 my-10">
         {categoryImages.Rings && (
           <CategoryCard title="Rings" imgUrl={categoryImages.Rings} />
         )}
@@ -76,9 +76,12 @@ export default CategorySection;
 // CategoryCard component with basic XSS protections
 const CategoryCard = ({ title, imgUrl }) => {
   return (
-    <div className="category-card relative w-64 h-64 overflow-hidden rounded-lg shadow-lg">
-      {/* Using a validated image URL */}
-      <img src={imgUrl} alt={title} className="w-full h-full object-cover" />
+    <div className="category-card relative w-full h-64 overflow-hidden rounded-lg shadow-lg">
+      <img
+        src={imgUrl}
+        alt={title}
+        className="w-full h-full object-cover transition-transform duration-300 transform hover:scale-105"
+      />
       <div className="absolute bottom-0 w-full bg-black bg-opacity-50 p-4 text-white">
         <h3 className="text-xl">{title}</h3>
       </div>
