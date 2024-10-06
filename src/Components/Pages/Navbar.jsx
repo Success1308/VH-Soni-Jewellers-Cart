@@ -1,8 +1,15 @@
+import { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { FiSearch, FiUser, FiShoppingBag, FiMenu, FiX } from "react-icons/fi";
 import Footer from "../Pages/Footer";
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen((prev) => !prev);
+  };
+
   return (
     <>
       <header>
@@ -24,6 +31,7 @@ export default function Navbar() {
               <NavLink
                 to="/all"
                 className="text-gray-700 font-semibold py-2 hover:text-black transition duration-300"
+                onClick={toggleMenu}
               >
                 All
               </NavLink>
