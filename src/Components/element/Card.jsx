@@ -20,7 +20,7 @@ const Card = ({ item, onAdd, loading }) => {
         <p className="text-gray-600">Color: {item.color}</p>
         <div className="flex justify-between items-center">
           <p className="text-xl font-bold text-gray-800">
-            ₹{item.price.toFixed(2)}
+            ${item.price.toFixed(2)}
           </p>
           <button
             onClick={() => onAdd(item)}
