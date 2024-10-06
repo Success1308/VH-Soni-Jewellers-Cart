@@ -1,8 +1,8 @@
-import useFetch from "./useFetch";
+import useFetch from "../Util/useFetch";
 
 export default function Home() {
   // Use the hook with your API endpoint
-  const { data, loading, error } = useFetch(
+  const { loading, error } = useFetch(
     "https://jewellery-shop-api-one.vercel.app/jewellery"
   );
 
@@ -15,7 +15,7 @@ export default function Home() {
         Jewelry Collection
       </h1>
       <div className="mx-8 grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5">
-        {data.map((item) => (
+        {/* {data.map((item) => (
           <div
             key={item.id}
             className="border rounded-lg p-4 bg-white shadow-md"
@@ -44,8 +44,8 @@ export default function Home() {
                 Add to Cart
               </button>
             </div>
-          </div>
-        ))}
+          </div> */}
+        {/* ))} */}
       </div>
     </div>
   );

@@ -8,6 +8,10 @@ export default {
         gold: "#FFD700",
         lightGold: "#FFBF00",
       },
+      fontSize: {
+        tiny: "0.625rem",
+        huge: "2.5rem",
+      },
     },
   },
   plugins: [],

@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: "Playfair Display", serif; /* An elegant font */
+@font-face {
+  font-family: "Ralgine";
+  src: url("/font/Ralgine-9MMJ2.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a {
+  font-family: "Ralgine", "Playfair Display", serif;
+  letter-spacing: 0.1rem;
 }
