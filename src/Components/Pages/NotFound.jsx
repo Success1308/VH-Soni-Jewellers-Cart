@@ -13,7 +13,7 @@ export default function NotFound() {
         </p>
 
         <Link to="/">
-          <button className="mt-4 px-6 py-3 bg-black text-white font-semibold rounded hover:bg-[#FFBF00] transition duration-300">
+          <button className="mt-4 px-6 py-3 bg-black text-white font-semibold rounded hover:bg-gray-700 transition duration-300">
             Go to Homepage
           </button>
         </Link>
