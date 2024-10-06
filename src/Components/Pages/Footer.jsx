@@ -1,15 +1,45 @@
+import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+
 const Footer = () => {
   return (
-    <footer className="footer bg-black text-white py-8">
-      <div className="container mx-auto flex justify-between">
-        <div>
-          <h4 className="text-lg font-semibold">VH Soni Jewellers</h4>
-          <p>Discover fine jewelry for every occasion.</p>
+    <footer className="footer bg-black text-white py-8 mt-auto">
+      <div className="container mx-auto flex flex-col items-center">
+        {/* Logo Section */}
+        <img
+          src="/src/assets/logo.jpg"
+          alt="VH Soni Jewellers Logo"
+          className="mb-4 h-24 w-auto rounded-lg"
+        />
+
+        {/* Title and Description */}
+        <div className="text-center">
+          <h4 className="text-2xl font-bold mb-2">VH Soni Jewellers</h4>
+          <p className="text-sm">Discover fine jewelry for every occasion.</p>
         </div>
-        <div className="space-x-4">
-          <a href="#">Facebook</a>
-          <a href="#">Instagram</a>
-          <a href="#">Twitter</a>
+
+        {/* Social Media Links */}
+        <div className="flex space-x-6 mt-4">
+          <a
+            href="#"
+            className="text-gray-400 hover:text-white transition duration-300"
+            aria-label="Facebook"
+          >
+            <FaFacebookF />
+          </a>
+          <a
+            href="#"
+            className="text-gray-400 hover:text-white transition duration-300"
+            aria-label="Instagram"
+          >
+            <FaInstagram />
+          </a>
+          <a
+            href="#"
+            className="text-gray-400 hover:text-white transition duration-300"
+            aria-label="Twitter"
+          >
+            <FaTwitter />
+          </a>
         </div>
       </div>
     </footer>

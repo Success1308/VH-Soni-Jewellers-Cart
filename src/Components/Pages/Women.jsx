@@ -14,7 +14,7 @@ const Women = () => {
 
   return (
     <div>
-      <CardLayout items={womenJewelryData} title={title} />
+      <CardLayout items={womenJewelryData} title={title} loading={loading} />
     </div>
   );
 };

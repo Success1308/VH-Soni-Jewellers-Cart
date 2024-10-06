@@ -13,7 +13,7 @@ const All = () => {
 
   return (
     <div>
-      <CardLayout items={data} title={title} />
+      <CardLayout items={data} title={title} loading={loading} />
     </div>
   );
 };

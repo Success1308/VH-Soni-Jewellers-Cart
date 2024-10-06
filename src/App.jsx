@@ -11,7 +11,7 @@ import Men from "./Components/Pages/Men";
 import Women from "./Components/Pages/Women";
 import About from "./Components/Pages/About";
 import Navbar from "./Components/Pages/Navbar";
-import Contact from "./Components/Pages/Navbar";
+import Contact from "./Components/Pages/Contact";
 import NotFound from "./Components/Pages/NotFound";
 
 const router = createBrowserRouter(

@@ -1,6 +1,12 @@
 import { BiCartAdd } from "react-icons/bi";
+import CardSkeleton from "./CardSkeleton";
 
-const Card = ({ item, onAdd }) => {
+const Card = ({ item, onAdd, loading }) => {
+  // If loading, render the skeleton
+  if (loading) {
+    return <CardSkeleton />;
+  }
+
   return (
     <div className="max-w-xs mx-auto bg-white rounded-lg shadow-md overflow-hidden">
       <img

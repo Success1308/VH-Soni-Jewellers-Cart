@@ -14,7 +14,8 @@ const Men = () => {
 
   return (
     <div>
-      <CardLayout items={menJewelryData} title={title} />
+      {/* Pass the loading prop to CardLayout */}
+      <CardLayout items={menJewelryData} title={title} loading={loading} />
     </div>
   );
 };

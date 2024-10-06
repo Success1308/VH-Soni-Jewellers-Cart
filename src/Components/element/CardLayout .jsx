@@ -1,9 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import Card from "./Card";
+import SkeletonCard from "./CardSkeleton";
 import { FiFilter, FiArrowUp, FiArrowDown } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
 
-const CardLayout = ({ items, title }) => {
+const CardLayout = ({ items, title, loading }) => {
   const [filterColor, setFilterColor] = useState("All");
   const [sortOrder, setSortOrder] = useState("asc");
   const [isColorDropdownOpen, setIsColorDropdownOpen] = useState(false);
@@ -11,7 +12,6 @@ const CardLayout = ({ items, title }) => {
   const colorDropdownRef = useRef(null);
   const sortDropdownRef = useRef(null);
 
-  // Close dropdown if clicked outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -33,7 +33,6 @@ const CardLayout = ({ items, title }) => {
     };
   }, []);
 
-  // Filter and sort data
   const filteredData = items.filter(
     (item) => filterColor === "All" || item.color === filterColor
   );
@@ -42,7 +41,6 @@ const CardLayout = ({ items, title }) => {
     return sortOrder === "asc" ? a.price - b.price : b.price - a.price;
   });
 
-  // Function to toggle dropdowns and ensure only one is open
   const toggleColorDropdown = () => {
     setIsColorDropdownOpen((prev) => !prev);
     if (isSortDropdownOpen) setIsSortDropdownOpen(false);
@@ -74,7 +72,7 @@ const CardLayout = ({ items, title }) => {
             </label>
             {isColorDropdownOpen && (
               <div
-                className="absolute top-full left-0 mt-2 border border-gray-300 bg-white rounded shadow-md z-10 w-32 sm:w-40 max-h-48 overflow-y-auto"
+                className="absolute top-full left-0 mt-2 border border-gray-300 bg-white rounded shadow-md z-10 w-32 sm:w-40"
                 style={{ right: 0, left: "auto" }}
               >
                 <div className="flex flex-col">
@@ -139,13 +137,16 @@ const CardLayout = ({ items, title }) => {
       </div>
 
       {/* Jewelry Cards */}
-
       <div className="mx-12 grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5">
-        {sortedData.map((item) => (
-          <NavLink key={item.id} to={`/product/${item.id}`}>
-            <Card key={item.id} item={item} />
-          </NavLink>
-        ))}
+        {loading
+          ? Array.from({ length: 9 }).map((_, index) => (
+              <SkeletonCard key={index} />
+            ))
+          : sortedData.map((item) => (
+              <NavLink key={item.id} to={`/product/${item.id}`}>
+                <Card item={item} loading={loading} />
+              </NavLink>
+            ))}
       </div>
     </div>
   );
