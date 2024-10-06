@@ -20,12 +20,19 @@ export default function Navbar() {
               className="h-20 md:h-32 rounded-lg"
             />
 
-            <div className="hidden md:flex justify-center items-center space-x-8">
+            <div className="hidden md:flex justify-center items-center space-x-12">
               <NavLink
                 to="/"
                 className="text-gray-700 font-semibold hover:text-black transition duration-300"
               >
                 NEW IN
+              </NavLink>
+              <NavLink
+                to="/all"
+                className="text-gray-700 font-semibold py-2 hover:text-black transition duration-300"
+                onClick={toggleMenu}
+              >
+                All
               </NavLink>
               <NavLink
                 to="/men"
@@ -83,6 +90,13 @@ export default function Navbar() {
                 onClick={toggleMenu}
               >
                 NEW IN
+              </NavLink>
+              <NavLink
+                to="/all"
+                className="text-gray-700 font-semibold py-2 hover:text-black transition duration-300"
+                onClick={toggleMenu}
+              >
+                All
               </NavLink>
               <NavLink
                 to="/men"

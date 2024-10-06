@@ -54,16 +54,15 @@ const CardLayout = ({ items, title }) => {
 
   return (
     <div className="p-4">
-      {/* Section Heading with Filter and Sort Options */}
-      <div className="flex flex-col sm:flex-row justify-between items-center mb-4">
-        {/* Title */}
-        <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center sm:text-left mb-2 sm:mb-0 bg-gradient-to-r from-yellow-800 to-pink-400 bg-clip-text text-transparent drop-shadow-lg">
-          {title}
-        </p>
+      <div className="flex items-center justify-between mb-4 bg-white rounded-md shadow-md pb-4 px-6">
+        <div className="flex-grow text-center">
+          <p className="text-xl sm:text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-yellow-800 to-pink-400 bg-clip-text text-transparent drop-shadow-lg">
+            {title}
+          </p>
+        </div>
 
-        {/* Container for Filter and Sort Options */}
+        {/* Filter and Sort Options */}
         <div className="flex items-center space-x-4">
-          {/* Color Filter */}
           <div className="relative" ref={colorDropdownRef}>
             <label
               className="cursor-pointer flex items-center"
@@ -140,7 +139,7 @@ const CardLayout = ({ items, title }) => {
       </div>
 
       {/* Jewelry Cards */}
-      <div className="grid gap-4 sm:gap-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 mx-2 sm:mx-4">
+      <div className="mx-8 grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5">
         {sortedData.map((item) => (
           <Card key={item.id} item={item} />
         ))}
