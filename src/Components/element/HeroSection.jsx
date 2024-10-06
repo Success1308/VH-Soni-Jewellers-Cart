@@ -31,7 +31,7 @@ const HeroSection = () => {
       <div className="relative w-full sm:w-1/3 text-center">
         <div className="relative inline-block bg-white rounded-lg shadow-lg p-6">
           <img
-            src="https://github.com/Success1308/VH-Soni-Jewellers-Cart/blob/18a1424101eb20e188a73592831d69f2260c5481/public/img/1000.jpeg"
+            src="https://github.com/Success1308/VH-Soni-Jewellers-Cart/blob/main/public/img/1000.jpeg?raw=true"
             alt="Product"
             className="w-64 h-64 sm:w-80 sm:h-80 object-cover mx-auto"
           />
