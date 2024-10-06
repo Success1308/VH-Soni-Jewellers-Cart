@@ -15,7 +15,7 @@ const About = () => {
 
         {/* Image Section */}
         <img
-          src="/src/assets/logo.jpg"
+          src="https://github.com/Success1308/VH-Soni-Jewellers-Cart/blob/main/public/img/logo.jpg?raw=true"
           alt="Jewelry Display"
           className="mb-8 rounded-lg shadow-lg h-64 w-auto"
         />

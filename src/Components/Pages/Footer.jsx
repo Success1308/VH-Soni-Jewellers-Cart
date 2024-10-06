@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container mx-auto flex flex-col items-center">
         {/* Logo Section */}
         <img
-          src="/src/assets/logo.jpg"
+          src="https://github.com/Success1308/VH-Soni-Jewellers-Cart/blob/main/public/img/logo.jpg?raw=true"
           alt="VH Soni Jewellers Logo"
           className="mb-4 h-24 w-auto rounded-lg"
         />
