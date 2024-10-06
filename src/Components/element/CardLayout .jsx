@@ -4,7 +4,7 @@ import SkeletonCard from "./CardSkeleton";
 import { FiFilter, FiArrowUp, FiArrowDown } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
 
-const CardLayout = ({ items, title, loading }) => {
+const CardLayout = ({ items, title, loading, onAdd }) => {
   const [filterColor, setFilterColor] = useState("All");
   const [sortOrder, setSortOrder] = useState("asc");
   const [isColorDropdownOpen, setIsColorDropdownOpen] = useState(false);
@@ -144,7 +144,7 @@ const CardLayout = ({ items, title, loading }) => {
             ))
           : sortedData.map((item) => (
               <NavLink key={item.id} to={`/product/${item.id}`}>
-                <Card item={item} loading={loading} />
+                <Card item={item} loading={loading} onAdd={onAdd} />
               </NavLink>
             ))}
       </div>

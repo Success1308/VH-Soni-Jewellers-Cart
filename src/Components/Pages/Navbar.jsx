@@ -3,7 +3,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import { FiSearch, FiUser, FiShoppingBag, FiMenu, FiX } from "react-icons/fi";
 import Footer from "../Pages/Footer";
 
-export default function Navbar() {
+export default function Navbar({ cartItems }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -14,7 +14,7 @@ export default function Navbar() {
     <>
       <header>
         <nav className="bg-white p-2 my-0 md:my-12 mb-8 shadow-md border-t border-b border-gray-300 text-lg">
-          <div className=" container mx-auto flex justify-between items-center h-16">
+          <div className="container mx-auto flex justify-between items-center h-16">
             <img
               src="https://github.com/Success1308/VH-Soni-Jewellers-Cart/blob/main/public/img/logo.jpg?raw=true"
               alt="VH Soni Jewellers"
@@ -31,7 +31,6 @@ export default function Navbar() {
               <NavLink
                 to="/all"
                 className="text-gray-700 font-semibold py-2 hover:text-black transition duration-300"
-                onClick={toggleMenu}
               >
                 All
               </NavLink>
@@ -74,9 +73,11 @@ export default function Navbar() {
               <FiSearch className="text-gray-700 w-6 h-6 hover:text-black transition duration-300" />
               <FiUser className="text-gray-700 w-6 h-6 hover:text-black transition duration-300" />
               <div className="relative">
-                <FiShoppingBag className="text-gray-700 w-6 h-6 hover:text-black transition duration-300" />
+                <NavLink to="/cart">
+                  <FiShoppingBag className="text-gray-700 w-6 h-6 hover:text-black transition duration-300" />
+                </NavLink>
                 <span className="absolute -top-1 -right-1.5 inline-flex items-center justify-center px-1 py-1 text-tiny font-bold leading-none text-white bg-black rounded-full">
-                  0
+                  {cartItems.length}
                 </span>
               </div>
             </div>
@@ -133,9 +134,11 @@ export default function Navbar() {
                 <FiSearch className="text-gray-700 w-6 h-6 hover:text-black transition duration-300" />
                 <FiUser className="text-gray-700 w-6 h-6 hover:text-black transition duration-300" />
                 <div className="relative">
-                  <FiShoppingBag className="text-gray-700 w-6 h-6 hover:text-black transition duration-300" />
+                  <NavLink to="/cart">
+                    <FiShoppingBag className="text-gray-700 w-6 h-6 hover:text-black transition duration-300" />
+                  </NavLink>
                   <span className="absolute -top-1 -right-1.5 inline-flex items-center justify-center px-1 py-1 text-tiny font-bold leading-none text-white bg-black rounded-full">
-                    0
+                    {cartItems.length}
                   </span>
                 </div>
               </div>

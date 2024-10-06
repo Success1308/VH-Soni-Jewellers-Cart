@@ -2,7 +2,6 @@ import { BiCartAdd } from "react-icons/bi";
 import CardSkeleton from "./CardSkeleton";
 
 const Card = ({ item, onAdd, loading }) => {
-  // If loading, render the skeleton
   if (loading) {
     return <CardSkeleton />;
   }
@@ -25,6 +24,7 @@ const Card = ({ item, onAdd, loading }) => {
           <button
             onClick={() => onAdd(item)}
             className="border border-black bg-transparent text-black text-xl py-2 px-2 rounded hover:bg-black hover:text-white transition duration-300"
+            aria-label={`Add ${item.name} to cart`}
           >
             <BiCartAdd className="text-2xl" />
           </button>
