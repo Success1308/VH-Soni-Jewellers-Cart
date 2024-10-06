@@ -5,7 +5,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import "./App.css";
-import Home from "./Components/Pages/Home";
+import Home, { apiLoader } from "./Components/Pages/Home";
 import All from "./Components/Pages/All";
 import Men from "./Components/Pages/Men";
 import Women from "./Components/Pages/Women";
@@ -18,7 +18,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Navbar />}>
       <Route index element={<Home />} />
-      <Route path="all" element={<All />} />
+      <Route path="all" element={<All />} loader={apiLoader} />
       <Route path="men" element={<Men />} />
       <Route path="women" element={<Women />} />
       <Route path="about" element={<About />} />

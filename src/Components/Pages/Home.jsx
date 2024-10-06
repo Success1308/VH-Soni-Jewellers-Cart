@@ -7,6 +7,9 @@ export default function Home() {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
+  if (!data || !Array.isArray(data)) {
+    return <p>No data available.</p>;
+  }
 
   return (
     <div className=" min-h-screen">
@@ -14,7 +17,7 @@ export default function Home() {
         Jewelry Collection
       </h1>
       <div className="mx-8 grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5">
-        {/* {data.map((item) => (
+        {data.map((item) => (
           <div
             key={item.id}
             className="border rounded-lg p-4 bg-white shadow-md"
@@ -44,8 +47,18 @@ export default function Home() {
               </button>
             </div>
           </div>
-        ))} */}
+        ))}
       </div>
     </div>
   );
 }
+
+export const apiLoader = async () => {
+  const response = await fetch(
+    "https://jewellery-shop-api-one.vercel.app/jewellery"
+  );
+  if (!response.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  return response.json();
+};
