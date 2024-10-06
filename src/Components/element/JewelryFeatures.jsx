@@ -2,26 +2,26 @@ const JewelryFeatures = () => {
   const features = [
     {
       id: 1,
-      icon: "/public/img/shipping.png",
+      icon: "https://github.com/Success1308/VH-Soni-Jewellers-Cart/blob/main/public/img/logo.jpg?raw=true",
       title: "FAST & SECURE SHIPPING",
       description: "Enjoy quick delivery of your favorite jewelry pieces!",
     },
     {
       id: 2,
-      icon: "/public/img/discount.png",
+      icon: "https://github.com/Success1308/VH-Soni-Jewellers-Cart/blob/main/public/img/discount.png?raw=true",
       title: "EXCLUSIVE OFFERS",
       description: "Get special discounts on your first purchase!",
     },
     {
       id: 3,
-      icon: "/public/img/authentic.png",
+      icon: "https://github.com/Success1308/VH-Soni-Jewellers-Cart/blob/main/public/img/authentic.png?raw=true",
       title: "100% AUTHENTIC",
       description:
         "All our jewelry is crafted with the highest quality standards.",
     },
     {
       id: 4,
-      icon: "/public/img/customer.png",
+      icon: "https://github.com/Success1308/VH-Soni-Jewellers-Cart/blob/main/public/img/authentic.png?raw=true",
       title: "24/7 CUSTOMER SUPPORT",
       description: "We're here to help you anytime, anywhere.",
     },
