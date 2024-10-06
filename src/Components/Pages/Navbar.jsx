@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { FiSearch, FiUser, FiShoppingBag, FiMenu, FiX } from "react-icons/fi";
+import Footer from "../Pages/Footer";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -145,6 +146,8 @@ export default function Navbar() {
       <main>
         <Outlet />
       </main>
+      {/* Footer */}
+      <Footer />
     </>
   );
 }
