@@ -7,7 +7,7 @@ import {
 import "./App.css";
 import Home from "./Components/Pages/Home";
 import All from "./Components/Pages/All";
-import Men from "./Components/Pages/Men";
+import Men from "./Components/element/Men";
 import Women from "./Components/Pages/Women";
 import About from "./Components/Pages/About";
 import Navbar from "./Components/Pages/Navbar";
