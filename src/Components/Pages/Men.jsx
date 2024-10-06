@@ -1,5 +1,5 @@
 import useFetch from "../Util/useFetch";
-import CardLayout from "./CardLayout ";
+import CardLayout from "../element/CardLayout ";
 
 const Men = () => {
   const { data, loading, error } = useFetch(
