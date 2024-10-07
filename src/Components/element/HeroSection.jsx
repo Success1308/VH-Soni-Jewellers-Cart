@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 const HeroSection = () => {
   return (
     <section className="hero-section bg-cream -mt-12 mx-4 sm:mx-16 p-10 min-h-[90vh] flex flex-col sm:flex-row items-center justify-between ">
@@ -22,9 +23,11 @@ const HeroSection = () => {
           craftsmanship and luxury. Perfect for every occasion, wear the
           brilliance you deserve.
         </p>
-        <button className="mt-6 px-4 sm:px-6 py-2 sm:py-3 bg-[#131c28] text-white font-semibold rounded-lg shadow-lg hover:bg-[#131c28]/80 transition duration-300">
-          Explore Now
-        </button>
+        <NavLink to="/shop">
+          <button className="mt-6 px-4 sm:px-6 py-2 sm:py-3 bg-[#131c28] text-white font-semibold rounded-lg shadow-lg hover:bg-[#131c28]/80 transition duration-300">
+            Explore Now
+          </button>
+        </NavLink>
       </div>
 
       {/* Product Card */}
