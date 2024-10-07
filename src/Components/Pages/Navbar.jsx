@@ -17,15 +17,16 @@ export default function Navbar({ cart }) {
   return (
     <div className="flex flex-col min-h-screen">
       {" "}
-      {/* Added flex container */}
       <header>
         <nav className="bg-white p-2 my-0 md:my-12 mb-8 shadow-md border-t border-b border-gray-300 text-lg">
           <div className="container mx-auto flex justify-between items-center h-16">
-            <img
-              src="https://github.com/Success1308/VH-Soni-Jewellers-Cart/blob/main/public/img/logo.jpg?raw=true"
-              alt="VH Soni Jewellers"
-              className="h-20 md:h-32 rounded-lg"
-            />
+            <NavLink to="/">
+              <img
+                src="https://github.com/Success1308/VH-Soni-Jewellers-Cart/blob/main/public/img/logo.jpg?raw=true"
+                alt="VH Soni Jewellers"
+                className="h-20 md:h-32 rounded-lg cursor-pointer"
+              />
+            </NavLink>
 
             <div className="hidden md:flex justify-center items-center space-x-12">
               <NavLink
