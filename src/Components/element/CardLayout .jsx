@@ -1,10 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import Card from "./Card";
-import SkeletonCard from "./CardSkeleton";
 import { FiFilter, FiArrowUp, FiArrowDown } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
 
-const CardLayout = ({ items, title, loading, onAdd }) => {
+const CardLayout = ({ data, loading, error, addToCart, title }) => {
   const [filterColor, setFilterColor] = useState("All");
   const [sortOrder, setSortOrder] = useState("asc");
   const [isColorDropdownOpen, setIsColorDropdownOpen] = useState(false);
@@ -33,7 +32,7 @@ const CardLayout = ({ items, title, loading, onAdd }) => {
     };
   }, []);
 
-  const filteredData = items.filter(
+  const filteredData = data.filter(
     (item) => filterColor === "All" || item.color === filterColor
   );
 
@@ -52,7 +51,7 @@ const CardLayout = ({ items, title, loading, onAdd }) => {
   };
 
   return (
-    <div className="px-4">
+    <div className="px-4 ">
       <div className="flex items-center justify-between mb-4 bg-white rounded-md shadow-md pb-4 px-6">
         <div className="flex-grow text-center">
           <p className="text-xl sm:text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-yellow-800 to-pink-400 bg-clip-text text-transparent drop-shadow-lg">
@@ -136,15 +135,23 @@ const CardLayout = ({ items, title, loading, onAdd }) => {
         </div>
       </div>
 
-      {/* Jewelry Cards */}
+      {/* Jewelry Cards or Skeletons */}
       <div className="mx-12 grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5">
         {loading
-          ? Array.from({ length: 9 }).map((_, index) => (
+          ? Array.from({ length: 8 }).map((_, index) => (
               <SkeletonCard key={index} />
             ))
           : sortedData.map((item) => (
-              <NavLink key={item.id} to={`/product/${item.id}`}>
-                <Card item={item} loading={loading} onAdd={onAdd} />
+              <NavLink
+                key={item.id}
+                to={`/${item.category.toLowerCase()}/${item.id}`}
+              >
+                <Card
+                  item={item}
+                  loading={loading}
+                  error={error}
+                  addToCart={addToCart}
+                />
               </NavLink>
             ))}
       </div>
@@ -153,3 +160,13 @@ const CardLayout = ({ items, title, loading, onAdd }) => {
 };
 
 export default CardLayout;
+
+const SkeletonCard = () => {
+  return (
+    <div className="animate-pulse flex flex-col items-center p-4 bg-gray-200 rounded-lg shadow-md">
+      <div className="h-48 w-full bg-gray-300 rounded-lg mb-4"></div>
+      <div className="h-6 w-3/4 bg-gray-300 rounded-lg mb-2"></div>
+      <div className="h-6 w-1/2 bg-gray-300 rounded-lg"></div>
+    </div>
+  );
+};

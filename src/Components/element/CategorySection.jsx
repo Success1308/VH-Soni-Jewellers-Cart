@@ -1,26 +1,20 @@
 import { useState, useEffect } from "react";
-import useFetch from "../Util/useFetch";
 
-// Function to validate URL (basic URL validation)
-const isValidUrl = (url) => {
-  try {
-    new URL(url);
-    return true;
-  } catch (e) {
-    console.log(e);
-    return false;
-  }
-};
-
-const CategorySection = () => {
-  const { data, loading, error } = useFetch(
-    "https://jewellery-shop-api-one.vercel.app/jewellery"
-  );
+const CategorySection = ({ data, loading, error }) => {
   const [categoryImages, setCategoryImages] = useState({
     Rings: null,
     Necklaces: null,
     Chains: null,
   });
+  const isValidUrl = (url) => {
+    try {
+      new URL(url);
+      return true;
+    } catch (e) {
+      console.log(e);
+      return false;
+    }
+  };
 
   const getRandomImageForCategory = (categoryKeyword) => {
     if (data && Array.isArray(data)) {
@@ -31,7 +25,7 @@ const CategorySection = () => {
       if (filteredItems.length > 0) {
         const randomItem =
           filteredItems[Math.floor(Math.random() * filteredItems.length)];
-        // Validate the URL before returning it
+
         return isValidUrl(randomItem.img)
           ? randomItem.img
           : "/images/fallback.jpg";
@@ -73,7 +67,6 @@ const CategorySection = () => {
 
 export default CategorySection;
 
-// CategoryCard component with basic XSS protections
 const CategoryCard = ({ title, imgUrl }) => {
   return (
     <div className="category-card relative w-full h-64 overflow-hidden rounded-lg shadow-lg">

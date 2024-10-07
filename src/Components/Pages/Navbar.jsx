@@ -3,15 +3,21 @@ import { NavLink, Outlet } from "react-router-dom";
 import { FiSearch, FiUser, FiShoppingBag, FiMenu, FiX } from "react-icons/fi";
 import Footer from "../Pages/Footer";
 
-export default function Navbar({ cartItems }) {
+export default function Navbar({ cart }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);
   };
+  const totalQuantity = cart.reduce(
+    (total, cartItem) => total + cartItem.quantity,
+    0
+  );
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
+      {" "}
+      {/* Added flex container */}
       <header>
         <nav className="bg-white p-2 my-0 md:my-12 mb-8 shadow-md border-t border-b border-gray-300 text-lg">
           <div className="container mx-auto flex justify-between items-center h-16">
@@ -76,8 +82,8 @@ export default function Navbar({ cartItems }) {
                 <NavLink to="/cart">
                   <FiShoppingBag className="text-gray-700 w-6 h-6 hover:text-black transition duration-300" />
                 </NavLink>
-                <span className="absolute -top-1 -right-1.5 inline-flex items-center justify-center px-1 py-1 text-tiny font-bold leading-none text-white bg-black rounded-full">
-                  {cartItems.length}
+                <span className="absolute -top-1 -right-1.5 inline-flex items-center justify-center px-1 py-1 text-xs font-bold leading-none text-white bg-black rounded-full">
+                  {totalQuantity}
                 </span>
               </div>
             </div>
@@ -137,8 +143,8 @@ export default function Navbar({ cartItems }) {
                   <NavLink to="/cart">
                     <FiShoppingBag className="text-gray-700 w-6 h-6 hover:text-black transition duration-300" />
                   </NavLink>
-                  <span className="absolute -top-1 -right-1.5 inline-flex items-center justify-center px-1 py-1 text-tiny font-bold leading-none text-white bg-black rounded-full">
-                    {cartItems.length}
+                  <span className="absolute -top-1 -right-1.5 inline-flex items-center justify-center px-1 py-1 text-xs font-bold leading-none text-white bg-black rounded-full">
+                    {totalQuantity}
                   </span>
                 </div>
               </div>
@@ -146,11 +152,11 @@ export default function Navbar({ cartItems }) {
           )}
         </nav>
       </header>
-      <main>
+      <main className="flex-grow">
         <Outlet />
       </main>
       {/* Footer */}
       <Footer />
-    </>
+    </div>
   );
 }

@@ -15,41 +15,103 @@ import Navbar from "./Components/Pages/Navbar";
 import Contact from "./Components/Pages/Contact";
 import NotFound from "./Components/Pages/NotFound";
 import Cart from "./Components/Pages/Cart";
+import ProductDetails from "./Components/Pages/ProductDetails";
 import { useState } from "react";
+import useFetch from "./Components/Util/useFetch";
 
 const App = () => {
-  // State to hold cart items
-  const [cartItems, setCartItems] = useState([]);
+  const [cart, setCart] = useState([]);
+  const { data, loading, error } = useFetch(
+    "https://jewellery-shop-api-one.vercel.app/jewellery"
+  );
 
-  // Function to add item to cart
-  const addItemToCart = (item) => {
-    setCartItems((prevItems) => [...prevItems, item]);
+  const addToCart = (item) => {
+    setCart((prevCart) => {
+      const existingItem = prevCart.find((cartItem) => cartItem.id === item.id);
+
+      if (existingItem) {
+        return prevCart.map((cartItem) =>
+          cartItem.id === item.id
+            ? { ...cartItem, quantity: cartItem.quantity + item.quantity }
+            : cartItem
+        );
+      } else {
+        return [...prevCart, { ...item }];
+      }
+    });
   };
 
-  // Function to remove item from cart
-  const removeItemFromCart = (itemId) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
+  // Function to remove an item from the cart
+  const removeFromCart = (itemId) => {
+    setCart((prevCart) => {
+      const existingItem = prevCart.find((cartItem) => cartItem.id === itemId);
+      if (existingItem.quantity === 1) {
+        // Remove the item if its quantity is 1
+        return prevCart.filter((cartItem) => cartItem.id !== itemId);
+      } else {
+        // Decrease the quantity by 1 if more than 1 exists
+        return prevCart.map((cartItem) =>
+          cartItem.id === itemId
+            ? { ...cartItem, quantity: cartItem.quantity - 1 }
+            : cartItem
+        );
+      }
+    });
   };
 
-  // Function to clear the cart
+  // Function to clear all items from the cart
   const clearCart = () => {
-    setCartItems([]);
+    setCart([]);
   };
 
-  // Create routes and pass down cart state and functions as props
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route
-        path="/"
-        element={<Navbar cartItems={cartItems} clearCart={clearCart} />}
-      >
-        <Route index element={<Home />} />
-        <Route path="all" element={<All addItemToCart={addItemToCart} />} />
-        <Route path="men" element={<Men addItemToCart={addItemToCart} />} />
-        <Route path="women" element={<Women addItemToCart={addItemToCart} />} />
+      <Route path="/" element={<Navbar cart={cart} />}>
+        <Route
+          index
+          element={<Home data={data} loading={loading} error={error} />}
+        />
+        <Route
+          path="all"
+          element={<All data={data} loading={loading} error={error} />}
+        />
+        <Route
+          path="men"
+          element={<Men data={data} loading={loading} error={error} />}
+        />
+        <Route
+          path="women"
+          element={<Women data={data} loading={loading} error={error} />}
+        />
+
+        <Route
+          path=":category/:id"
+          element={
+            <ProductDetails
+              data={data}
+              loading={loading}
+              error={error}
+              addToCart={addToCart}
+            />
+          }
+        />
+
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
-        <Route path="cart" element={<Cart />} />
+        <Route
+          path="cart"
+          element={
+            <Cart
+              data={data}
+              loading={loading}
+              error={error}
+              cart={cart}
+              addToCart={addToCart}
+              removeFromCart={removeFromCart}
+              clearCart={clearCart}
+            />
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Route>
     )

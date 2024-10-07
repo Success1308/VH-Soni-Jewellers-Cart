@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 
+// Cache to store fetched data
+const cache = {};
+
 const useFetch = (url) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -10,6 +13,12 @@ const useFetch = (url) => {
     const signal = controller.signal;
 
     const fetchData = async () => {
+      // Check if the data is already cached
+      if (cache[url]) {
+        setData(cache[url]); // Use cached data
+        return; // Skip fetching
+      }
+
       setLoading(true);
 
       try {
@@ -20,6 +29,7 @@ const useFetch = (url) => {
         }
 
         const result = await response.json();
+        cache[url] = result; // Cache the fetched data
         setData(result);
       } catch (err) {
         if (err.name !== "AbortError") {
