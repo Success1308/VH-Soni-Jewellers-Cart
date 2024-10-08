@@ -23,7 +23,7 @@ export default function Navbar({ cart }) {
             <NavLink to="/">
               <img
                 src="https://github.com/Success1308/VH-Soni-Jewellers-Cart/blob/main/public/img/logo.jpg?raw=true"
-                alt="VH Soni Jewellers"
+                alt="VH Soni Jeweller"
                 className="h-20 md:h-32 rounded-lg cursor-pointer"
               />
             </NavLink>
