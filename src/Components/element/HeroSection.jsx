@@ -23,7 +23,7 @@ const HeroSection = () => {
           craftsmanship and luxury. Perfect for every occasion, wear the
           brilliance you deserve.
         </p>
-        <NavLink to="/shop">
+        <NavLink to="/">
           <button className="mt-6 px-4 sm:px-6 py-2 sm:py-3 bg-[#131c28] text-white font-semibold rounded-lg shadow-lg hover:bg-[#131c28]/80 transition duration-300">
             Explore Now
           </button>
