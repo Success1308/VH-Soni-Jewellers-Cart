@@ -83,7 +83,7 @@ export default function Navbar({ cart }) {
                 <NavLink to="/cart">
                   <FiShoppingBag className="text-gray-700 w-6 h-6 hover:text-black transition duration-300" />
                 </NavLink>
-                <span className="absolute -top-1 -right-1.5 inline-flex items-center justify-center px-1 py-1 text-xs font-bold leading-none text-white bg-black rounded-full">
+                <span className="absolute -top-1 -right-1.5 mx-0.5 inline-flex items-center justify-center px-1 py-1 text-xs font-bold leading-none text-white bg-black rounded-full">
                   {totalQuantity}
                 </span>
               </div>
