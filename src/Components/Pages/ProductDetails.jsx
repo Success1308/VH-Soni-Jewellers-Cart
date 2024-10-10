@@ -67,6 +67,7 @@ const ProductDetails = ({ data, loading, error, addToCart }) => {
               onClick={decreaseQuantity}
             >
               -
+  
             </button>
             <span className="mx-2">{quantity}</span>
             <button
